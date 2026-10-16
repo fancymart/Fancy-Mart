@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LEDWig – Your ride. With a playful side.</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#17102b;--paper:#f6f2ff;--card:#fff;--line:#ddd3f5;--muted:#5d5478;--purple:#7c3aed;--purple2:#a855f7;--neon:#39ff9c;--pink:#ff3df2;--night:#0e0820;--night2:#1d1238;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#f3eeff;--paper:#150d2a;--card:#1f1540;--line:#372a63;--muted:#b3a8d6}}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 'DM Sans',system-ui,sans-serif;padding-bottom:84px}
+h1,h2,h3{font-family:'Bricolage Grotesque','DM Sans',sans-serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+h2{font-size:clamp(30px,5vw,52px)}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+button{font:inherit;cursor:pointer;border:0;color:inherit}
+:focus-visible{outline:3px solid var(--neon);outline-offset:3px}
+header{position:sticky;top:0;z-index:20;background:rgba(14,8,32,.88);backdrop-filter:blur(12px);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font:800 24px 'Bricolage Grotesque',sans-serif;color:#fff;text-decoration:none;letter-spacing:-.03em}
+.logo b{color:var(--neon)}
+.cart{background:none;color:#fff;display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:99px}
+.cart:hover{background:rgba(255,255,255,.12)}
+.cart span{background:var(--pink);color:#fff;border-radius:99px;font-size:12px;font-weight:700;min-width:20px;height:20px;display:grid;place-items:center;padding:0 5px}
+.hero{background:radial-gradient(900px 500px at 70% 0,#4c1d95 0,transparent 70%),var(--night);color:#fff;padding:36px 0 56px}
+.hero .wrap{display:grid;gap:32px}
+.stage{background:var(--night2);border-radius:28px;aspect-ratio:1/1;display:grid;place-items:center;position:relative;overflow:hidden;border:1px solid #3b2a6e}
+.stage svg{width:92%;height:auto}
+.dots{position:absolute;bottom:14px;display:flex;gap:8px}
+.dots i{width:8px;height:8px;border-radius:9px;background:#fff5;transition:.3s}
+.dots i.on{width:24px;background:var(--neon)}
+.tag{display:inline-block;background:var(--neon);color:#0e0820;font-weight:700;font-size:14px;padding:4px 12px;border-radius:99px}
+.hero h1{font-size:clamp(40px,7vw,68px);margin:14px 0}
+.hero .sub{color:#cbbfee;max-width:46ch}
+.price{display:flex;align-items:baseline;gap:12px;margin:20px 0 6px;flex-wrap:wrap}
+.price strong{font:800 40px 'Bricolage Grotesque',sans-serif}
+.price s{color:#9a8dc4}
+.lbl{font-weight:700;margin:22px 0 10px}
+.lbl small{font-weight:400;color:#bdb0e6}
+.sw{display:flex;gap:12px;flex-wrap:wrap}
+.sw button{width:52px;height:52px;border-radius:50%;border:3px solid transparent;box-shadow:0 0 0 2px #fff3;transition:.2s}
+.sw button:hover{transform:scale(1.1)}
+.sw button[aria-pressed=true]{border-color:#fff;box-shadow:0 0 18px 2px var(--c)}
+.tiers{display:grid;gap:10px}
+.tier{display:flex;justify-content:space-between;align-items:center;background:#ffffff0f;border:2px solid #ffffff22;border-radius:16px;padding:14px 18px;text-align:left;width:100%;transition:.2s}
+.tier:hover{border-color:var(--purple2)}
+.tier[aria-pressed=true]{border-color:var(--neon);background:#39ff9c14}
+.tier em{font-style:normal;background:var(--pink);color:#fff;font-size:13px;font-weight:700;border-radius:99px;padding:2px 10px;margin-left:8px}
+.cta{display:block;width:100%;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;font-weight:700;font-size:18px;padding:18px 24px;border-radius:16px;margin-top:20px;transition:.2s;text-align:center;text-decoration:none}
+.cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px #a855f788}
+.cta:active{transform:none}
+.badges{display:flex;gap:10px 18px;flex-wrap:wrap;margin-top:16px;color:#cbbfee;font-size:14px}
+.badges span:before{content:"✓ ";color:var(--neon);font-weight:700}
+.sec{padding:72px 0}
+.feat{display:grid;gap:16px;margin-top:-1px}
+.feat div{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px}
+.feat svg{width:44px;height:44px;margin-bottom:12px}
+.feat h3{font-size:22px;margin-bottom:6px}
+.feat p,.copy{color:var(--muted)}
+.split{display:grid;gap:32px;align-items:center}
+.split .copy{margin-top:16px;font-size:19px;max-width:48ch}
+.scene{border-radius:28px;overflow:hidden;border:1px solid var(--line)}
+.scene svg{display:block;width:100%;height:auto}
+.dark{background:var(--night);color:#fff}
+.dark .copy{color:#cbbfee}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:32px}
+.grid button{background:var(--night2);border:1px solid #3b2a6e;border-radius:22px;padding:10px 10px 16px;transition:.25s;text-align:center;font-weight:700;color:#fff}
+.grid button:hover{transform:translateY(-4px);border-color:var(--c)}
+.grid svg{width:100%;height:auto;display:block}
+.steps{display:grid;gap:16px;margin-top:32px;counter-reset:s}
+.step{display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px}
+.step:before{counter-increment:s;content:"0" counter(s);font:800 40px 'Bricolage Grotesque',sans-serif;color:var(--purple2);line-height:1}
+.step h3{font-size:22px;margin-bottom:4px}
+.step p{color:var(--muted)}
+.faq{max-width:760px;margin:32px auto 0}
+details{border-bottom:1px solid var(--line);padding:4px 0}
+summary{cursor:pointer;list-style:none;font:700 19px 'DM Sans',sans-serif;padding:18px 0;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:26px;line-height:1;color:var(--purple2);transition:transform .25s}
+details[open] summary:after{transform:rotate(45deg)}
+details p{color:var(--muted);padding:0 0 20px}
+.final{background:linear-gradient(135deg,var(--purple),#4c1d95);color:#fff;text-align:center;border-radius:32px;padding:56px 24px}
+.final p{margin:14px auto 26px;max-width:44ch;color:#eadfff}
+.btn2{display:inline-block;background:var(--neon);color:#0e0820;font-weight:700;padding:16px 32px;border-radius:99px;text-decoration:none;transition:.2s}
+.btn2:hover{transform:scale(1.05);box-shadow:0 0 28px var(--neon)}
+footer{background:var(--night);color:#cbbfee;padding:56px 0 30px}
+footer .wrap{display:grid;gap:28px}
+footer h3{color:#fff;font-size:30px}
+footer nav{display:flex;flex-wrap:wrap;gap:10px 22px}
+footer a{color:#cbbfee}
+footer a:hover{color:var(--neon)}
+.news{display:flex;gap:8px;flex-wrap:wrap}
+.news input{flex:1;min-width:200px;padding:14px 18px;border-radius:99px;border:1px solid #4a3a80;background:#ffffff10;color:#fff;font:inherit}
+.news button{background:var(--purple2);color:#fff;font-weight:700;padding:14px 24px;border-radius:99px}
+.news button:hover{background:var(--purple)}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--night);border-top:1px solid #3b2a6e;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px));color:#fff}
+.bar b{font:800 22px 'Bricolage Grotesque',sans-serif}
+.bar button{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;font-weight:700;padding:13px 26px;border-radius:14px;transition:.2s}
+.bar button:hover{filter:brightness(1.15)}
+.toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,20px);background:var(--neon);color:#0e0820;font-weight:700;padding:12px 22px;border-radius:99px;opacity:0;pointer-events:none;transition:.3s;z-index:40}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media(min-width:760px){
+.hero .wrap{grid-template-columns:1fr 1fr;align-items:center;gap:56px}
+.feat{grid-template-columns:repeat(3,1fr)}
+.split{grid-template-columns:1fr 1fr;gap:56px}
+.split.rev .scene{order:2}
+.grid{grid-template-columns:repeat(5,1fr)}
+.steps{grid-template-columns:repeat(3,1fr)}
+.step{flex-direction:column}
+.bar{display:none}
+body{padding-bottom:0}
+footer .wrap{grid-template-columns:1.2fr 1fr 1fr}
+.tiers{grid-template-columns:repeat(3,1fr)}
+.tier{flex-direction:column;align-items:flex-start;gap:6px}
+.tier em{margin:0}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@keyframes wag{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.wag{transform-origin:50% 80%;animation:wag 3.2s ease-in-out infinite}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#top">LED<b>Wig</b></a>
+<button class="cart" aria-label="Cart"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 4h2l2.4 11h10l2-8H6.5"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg><span id="cc">0</span></button></div></header>
+
+<section class="hero" id="top"><div class="wrap">
+<div class="stage" id="stage" aria-label="LEDWig product preview"></div>
+<div>
+<span class="tag">Sale · 20% off</span>
+<h1>Your ride. With a playful side.</h1>
+<p class="sub">A dynamic dual-layer accessory with customizable lighting and a mount that sets up in under a minute. Stick it on your dash, your desk, anywhere that needs a little wag.</p>
+<div class="price"><strong>$27.99</strong><span>USD</span><s>$34.99</s></div>
+<div class="lbl">Style: <small id="sname">Ultra Red</small></div>
+<div class="sw" id="sw"></div>
+<div class="lbl">Choose a pack</div>
+<div class="tiers" id="tiers"></div>
+<button class="cta" id="add">Add to cart - $27.99</button>
+<div class="badges"><span>Free shipping over $40</span><span>30-day returns</span><span>1-year warranty</span><span>Secure checkout</span></div>
+</div></div></section>
+
+<section class="sec"><div class="wrap feat">
+<div><svg viewBox="0 0 44 44" fill="none" stroke="#a855f7" stroke-width="3" stroke-linecap="round"><path d="M6 30c8-16 24-16 32 0"/><path d="M12 32c6-10 14-10 20 0" stroke="#39ff9c"/></svg><h3>Vibrant dual-layer lighting</h3><p>Two glowing layers blend into one bright, colorful curve.</p></div>
+<div><svg viewBox="0 0 44 44" fill="none" stroke="#a855f7" stroke-width="3" stroke-linecap="round"><rect x="10" y="22" width="24" height="14" rx="4"/><path d="M22 22V8M16 14l6-6 6 6" stroke="#39ff9c"/></svg><h3>Quick &amp; easy adjustable mount</h3><p>Stick it, tilt it, done. Reposition whenever you like.</p></div>
+<div><svg viewBox="0 0 44 44" fill="none" stroke="#a855f7" stroke-width="3" stroke-linecap="round"><path d="M5 30l4-10h18l6 6h6v4H5z"/><circle cx="13" cy="32" r="2" stroke="#39ff9c"/><circle cx="31" cy="32" r="2" stroke="#39ff9c"/></svg><h3>Everywhere vibes for room or car</h3><p>Works on a dashboard, a monitor stand or a bedroom shelf.</p></div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap split">
+<div class="scene" id="scene1"></div>
+<div><h2>Small detail. Big main-character energy.</h2>
+<p class="copy">One LEDWig turns a plain dashboard or desk into something people ask about. It adds a fun touch to any space or vehicle setup, without wiring or tools.</p></div>
+</div></section>
+
+<section class="sec dark"><div class="wrap"><h2>Five styles. Zero blending in.</h2><div class="grid" id="grid"></div></div></section>
+
+<section class="sec"><div class="wrap"><h2>Charge. Fit. Wag.</h2><div class="steps">
+<div class="step"><div><h3>Choose your spot.</h3><p>Find a clean, flat surface on your dash, desk or shelf where the glow can be seen.</p></div></div>
+<div class="step"><div><h3>Check your setup.</h3><p>Press the mount firmly in place and tilt it to the angle you like.</p></div></div>
+<div class="step"><div><h3>Power up. Show it off.</h3><p>Switch it on, pick a light mode and enjoy the glow.</p></div></div>
+</div></div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap split rev">
+<div class="scene" id="scene2"></div>
+<div><h2>Better as a bundle.</h2>
+<p class="copy">Pair two or three units and mix styles for an immersive light show across your dash, desk or room. Bundles also cost less per piece.</p>
+<a class="btn2" style="margin-top:22px" href="#top" data-pack="2">Get the 2 pack</a></div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap"><h2 style="text-align:center">Good questions. Clear answers.</h2><div class="faq">
+<details open><summary>Do all five styles have LEDs?</summary><p>Yes. Every style has dual-layer LEDs. They differ in color palette and lighting effects.</p></details>
+<details><summary>Will it fit my car or room setup?</summary><p>The adjustable mount sticks to most flat, clean surfaces, including dashboards, desks, monitor stands and shelves.</p></details>
+<details><summary>Can I change the pattern or speed?</summary><p>Yes. Cycle through lighting modes and speeds with the built-in button.</p></details>
+<details><summary>How strong is the adhesive?</summary><p>It uses a strong removable adhesive pad. Clean the surface first for the best hold.</p></details>
+<details><summary>What are the installation requirements?</summary><p>No tools or wiring. Charge it by USB, press it onto a clean surface and switch it on.</p></details>
+</div></div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap"><div class="final"><h2>Make the next meetup yours.</h2><p>Pick the glow that matches your ride and show up with a little extra light.</p><a class="btn2" href="#top">Choose your style</a></div></div></section>
+
+<footer><div class="wrap">
+<div><h3>Forever bright.</h3><p style="margin-top:10px">Playful light for rides, rooms and everything in between.</p></div>
+<nav aria-label="Footer"><a href="#">Terms</a><a href="#">Refund Policy</a><a href="#">Privacy Policy</a><a href="#">Shipping Info</a><a href="#">Contact</a></nav>
+<form class="news" id="news"><input type="email" required placeholder="Your email" aria-label="Email"><button>Subscribe</button></form>
+</div><div class="wrap" style="margin-top:28px;font-size:14px">© 2026 LEDWig</div></footer>
+
+<div class="bar"><div><b id="bp">$27.99</b><div style="font-size:13px;color:#bdb0e6">USD</div></div><button id="add2">Add to cart</button></div>
+<div class="toast" id="toast"></div>
+
+<script>
+var S=[{n:'Ultra Red',c:['#ff1744','#ff6d00']},{n:'Rainbow FX',c:['#ff3df2','#39ff9c']},{n:'Pastel',c:['#ffb3e6','#a5d8ff']},{n:'Sunset',c:['#ff7a18','#a855f7']},{n:'Neon FX',c:['#39ff9c','#00d4ff']}];
+var T=[{k:1,n:'1 Pack',p:27.99,s:''},{k:2,n:'2 Pack',p:47.99,s:'Save $7.99'},{k:3,n:'3 Pack',p:66.19,s:'Save $13.78'}];
+var cur=0,pack=1,cart=0,uid=0;
+function wing(i,o){o=o||{};var id='g'+(uid++),c=S[i].c;
+return '<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="'+S[i].n+' LEDWig"><defs><linearGradient id="'+id+'" x1="0" x2="1"><stop offset="0" stop-color="'+c[0]+'"/><stop offset="1" stop-color="'+c[1]+'"/></linearGradient><filter id="f'+id+'" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter></defs>'+
+'<g class="'+(o.still?'':'wag')+'"><g fill="none" stroke-linecap="round">'+
+'<path d="M50 215C90 70 270 30 350 130" stroke="url(#'+id+')" stroke-width="30" filter="url(#f'+id+')" opacity=".8"/>'+
+'<path d="M50 215C90 70 270 30 350 130" stroke="url(#'+id+')" stroke-width="20"/>'+
+'<path d="M90 225C125 120 250 90 320 160" stroke="url(#'+id+')" stroke-width="14" opacity=".9"/>'+
+'<path d="M90 225C125 120 250 90 320 160" stroke="#fff" stroke-width="3" opacity=".7"/></g>'+
+'<rect x="150" y="236" width="100" height="22" rx="8" fill="#2a1d52" stroke="#4a3a80"/></g></svg>'}
+function room(styles,car){var h='<svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg'+uid+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d1238"/><stop offset="1" stop-color="#0e0820"/></linearGradient></defs><rect width="600" height="380" fill="url(#bg'+uid+')"/>';
+if(car){h+='<path d="M0 250h600v130H0z" fill="#150d2a"/><path d="M60 250l60-70h260l70 70" fill="#241848" stroke="#4a3a80"/><circle cx="170" cy="260" r="34" fill="#0a0518" stroke="#4a3a80"/><circle cx="440" cy="260" r="34" fill="#0a0518" stroke="#4a3a80"/>'}
+else{h+='<rect x="40" y="260" width="520" height="16" rx="6" fill="#3a2a6e"/><rect x="60" y="276" width="14" height="90" fill="#2a1d52"/><rect x="526" y="276" width="14" height="90" fill="#2a1d52"/><rect x="330" y="120" width="190" height="125" rx="10" fill="#150d2a" stroke="#4a3a80" stroke-width="3"/><rect x="415" y="245" width="20" height="15" fill="#4a3a80"/>'}
+h+='</svg>';return h}
+function overlay(arr){return '<div style="position:relative">'+room(0,arr.car)+arr.w.map(function(w){return '<div style="position:absolute;left:'+w.x+'%;top:'+w.y+'%;width:'+w.s+'%">'+wing(w.i)+'</div>'}).join('')+'</div>'}
+document.getElementById('scene1').innerHTML=overlay({car:0,w:[{x:6,y:8,s:50,i:1}]});
+document.getElementById('scene2').innerHTML=overlay({car:1,w:[{x:2,y:2,s:40,i:0},{x:30,y:18,s:40,i:4},{x:58,y:2,s:40,i:3}]});
+var sw=document.getElementById('sw'),grid=document.getElementById('grid'),tiers=document.getElementById('tiers'),stage=document.getElementById('stage');
+S.forEach(function(s,i){var b=document.createElement('button');b.style.background='linear-gradient(135deg,'+s.c[0]+','+s.c[1]+')';b.style.setProperty('--c',s.c[0]);b.setAttribute('aria-label',s.n);b.onclick=function(){pick(i)};sw.appendChild(b);
+var g=document.createElement('button');g.style.setProperty('--c',s.c[0]);g.innerHTML=wing(i,{still:1})+s.n;g.onclick=function(){pick(i);document.getElementById('top').scrollIntoView()};grid.appendChild(g)});
+T.forEach(function(t,i){var b=document.createElement('button');b.className='tier';b.innerHTML='<span><b>'+t.n+'</b>'+(t.s?'<em>'+t.s+'</em>':'')+'</span><span>$'+t.p.toFixed(2)+'</span>';b.onclick=function(){setPack(t.k)};tiers.appendChild(b)});
+function pick(i){cur=i;render()}
+function setPack(k){pack=k;render()}
+function render(){
+stage.innerHTML=wing(cur)+'<div class="dots">'+S.map(function(_,i){return '<i class="'+(i==cur?'on':'')+'"></i>'}).join('')+'</div>';
+document.getElementById('sname').textContent=S[cur].n;
+[].forEach.call(sw.children,function(b,i){b.setAttribute('aria-pressed',i==cur)});
+[].forEach.call(tiers.children,function(b,i){b.setAttribute('aria-pressed',T[i].k==pack)});
+var p=T[pack-1].p.toFixed(2);
+document.getElementById('add').textContent='Add to cart - $'+p;
+document.getElementById('bp').textContent='$'+p}
+function add(){cart+=pack;document.getElementById('cc').textContent=cart;var t=document.getElementById('toast');t.textContent=pack+'× '+S[cur].n+' added to cart';t.classList.add('on');setTimeout(function(){t.classList.remove('on')},2000)}
+document.getElementById('add').onclick=add;document.getElementById('add2').onclick=add;
+[].forEach.call(document.querySelectorAll('[data-pack]'),function(a){a.onclick=function(){setPack(+a.dataset.pack)}});
+document.getElementById('news').onsubmit=function(e){e.preventDefault();e.target.innerHTML='<p style="color:#39ff9c;font-weight:700">Thanks, you\'re on the list.</p>'};
+setInterval(function(){if(!document.hidden&&!matchMedia('(prefers-reduced-motion:reduce)').matches&&document.activeElement.tagName!='BUTTON'){}},9999);
+render();
+</script>
+</body>
+</html>
